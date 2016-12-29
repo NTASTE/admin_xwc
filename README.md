@@ -1,4 +1,4 @@
-![cmd-markdown-logo](https://raw.githubusercontent.com/gaojiyong/admin_xwc/master/web/adminx/images/tea.png)
+![cmd-markdown-logo](https://raw.githubusercontent.com/gaojiyong/admin_xwc/master/app/web/adminx/images/tea.png)
 # 欢迎使用 夏午茶 后台管理系统
 
 ------
@@ -27,11 +27,11 @@
 相关截图
 
 
-![cmd-markdown-logo](https://raw.githubusercontent.com/gaojiyong/admin_xwc/master/doc/login.jpg)
+![cmd-markdown-logo](https://raw.githubusercontent.com/gaojiyong/admin_xwc/master/app/doc/login.jpg)
 
-![cmd-markdown-logo](https://raw.githubusercontent.com/gaojiyong/admin_xwc/master/doc/article_list.jpg)
-![cmd-markdown-logo](https://raw.githubusercontent.com/gaojiyong/admin_xwc/master/doc/article_list2.jpg)
-![cmd-markdown-logo](https://raw.githubusercontent.com/gaojiyong/admin_xwc/master/doc/article_add.jpg)
+![cmd-markdown-logo](https://raw.githubusercontent.com/gaojiyong/admin_xwc/master/app/doc/article_list.jpg)
+![cmd-markdown-logo](https://raw.githubusercontent.com/gaojiyong/admin_xwc/master/app/doc/article_list2.jpg)
+![cmd-markdown-logo](https://raw.githubusercontent.com/gaojiyong/admin_xwc/master/app/doc/article_add.jpg)
 
  - 作者： gaojiyong
  - QQ ： 624288876
