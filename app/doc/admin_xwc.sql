@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 2016-12-23 16:33:47
+-- Generation Time: 2016-12-30 18:26:02
 -- 服务器版本： 5.6.29-log
 -- PHP Version: 5.6.22
 
@@ -19,8 +19,171 @@ SET time_zone = "+00:00";
 --
 -- Database: `admin_xwc`
 --
-CREATE DATABASE IF NOT EXISTS `admin_xwc` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `admin_xwc`;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `auth_assignment`
+--
+
+CREATE TABLE IF NOT EXISTS `auth_assignment` (
+  `item_name` varchar(64) NOT NULL,
+  `user_id` varchar(64) NOT NULL,
+  `created_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色与用户关联表';
+
+--
+-- 转存表中的数据 `auth_assignment`
+--
+
+INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
+('admin', '1', 1483065650),
+('author', '1', 1483065650),
+('author', '7', 1476066412),
+('author', '8', 1483088188),
+('author', '9', 1483088785);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `auth_item`
+--
+
+CREATE TABLE IF NOT EXISTS `auth_item` (
+  `name` varchar(64) NOT NULL,
+  `type` int(11) NOT NULL,
+  `description` text,
+  `rule_name` varchar(64) DEFAULT NULL,
+  `data` text,
+  `created_at` int(11) DEFAULT NULL,
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色与权限表';
+
+--
+-- 转存表中的数据 `auth_item`
+--
+
+INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `created_at`, `updated_at`) VALUES
+('admin', 1, '管理员', NULL, NULL, 1470205381, 1470205381),
+('article/create', 2, '文章添加', NULL, NULL, NULL, NULL),
+('article/del', 2, '文章删除', NULL, NULL, NULL, NULL),
+('article/edit', 2, '文章编辑', NULL, NULL, NULL, NULL),
+('article/list', 2, '文章列表', NULL, NULL, NULL, NULL),
+('author', 1, '编辑', NULL, NULL, 1470205381, 1470205381),
+('rabc/rcreate', 2, '角色添加', NULL, NULL, NULL, NULL),
+('rabc/rdel', 2, '角色删除', NULL, NULL, NULL, NULL),
+('rabc/redit', 2, '角色编辑', NULL, NULL, NULL, NULL),
+('rabc/rescreate', 2, '资源添加', NULL, NULL, NULL, NULL),
+('rabc/resdel', 2, '资源删除', NULL, NULL, NULL, NULL),
+('rabc/resedit', 2, '资源编辑', NULL, NULL, NULL, NULL),
+('rabc/reslist', 2, '资源列表', NULL, NULL, NULL, NULL),
+('rabc/rlist', 2, '角色列表', NULL, NULL, NULL, NULL),
+('rabc/ucreate', 2, '用户添加', NULL, NULL, NULL, NULL),
+('rabc/udel', 2, '用户删除', NULL, NULL, NULL, NULL),
+('rabc/uedit', 2, '用户编辑', NULL, NULL, NULL, NULL),
+('rabc/ulist', 2, '用户列表', NULL, NULL, NULL, NULL),
+('site/index', 2, '概述', NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `auth_item_child`
+--
+
+CREATE TABLE IF NOT EXISTS `auth_item_child` (
+  `parent` varchar(64) NOT NULL,
+  `child` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `auth_item_child`
+--
+
+INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
+('admin', 'article/create'),
+('author', 'article/create'),
+('test', 'article/create'),
+('admin', 'article/del'),
+('test', 'article/del'),
+('admin', 'article/edit'),
+('author', 'article/edit'),
+('test', 'article/edit'),
+('admin', 'article/list'),
+('author', 'article/list'),
+('test', 'article/list'),
+('admin', 'rabc/rcreate'),
+('admin', 'rabc/rdel'),
+('admin', 'rabc/redit'),
+('admin', 'rabc/rescreate'),
+('admin', 'rabc/resdel'),
+('admin', 'rabc/resedit'),
+('admin', 'rabc/reslist'),
+('admin', 'rabc/rlist'),
+('admin', 'rabc/ucreate'),
+('admin', 'rabc/udel'),
+('admin', 'rabc/uedit'),
+('admin', 'rabc/ulist'),
+('admin', 'site/index'),
+('author', 'site/index'),
+('test', 'site/index');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `auth_menu`
+--
+
+CREATE TABLE IF NOT EXISTS `auth_menu` (
+  `id` int(11) NOT NULL,
+  `pid` tinyint(1) NOT NULL DEFAULT '0',
+  `name` varchar(50) NOT NULL,
+  `depth` tinyint(3) NOT NULL DEFAULT '1' COMMENT '菜单层级',
+  `sort` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='菜单表';
+
+--
+-- 转存表中的数据 `auth_menu`
+--
+
+INSERT INTO `auth_menu` (`id`, `pid`, `name`, `depth`, `sort`) VALUES
+(2, 0, '权限', 1, 1),
+(3, 0, '概述', 1, 1),
+(5, 0, '文章', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `auth_menu_item`
+--
+
+CREATE TABLE IF NOT EXISTS `auth_menu_item` (
+  `menu_id` int(11) NOT NULL,
+  `item_name` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='菜单权限关联表';
+
+--
+-- 转存表中的数据 `auth_menu_item`
+--
+
+INSERT INTO `auth_menu_item` (`menu_id`, `item_name`) VALUES
+(2, 'rabc/rcreate'),
+(2, 'rabc/rdel'),
+(2, 'rabc/redit'),
+(2, 'rabc/rescreate'),
+(2, 'rabc/resdel'),
+(2, 'rabc/resedit'),
+(2, 'rabc/reslist'),
+(2, 'rabc/rlist'),
+(2, 'rabc/ucreate'),
+(2, 'rabc/udel'),
+(2, 'rabc/uedit'),
+(2, 'rabc/ulist'),
+(3, 'site/index'),
+(4, 'mmeber/itemadd'),
+(5, 'article/create'),
+(5, 'article/del'),
+(5, 'article/edit'),
+(5, 'article/list');
 
 -- --------------------------------------------------------
 
@@ -28,7 +191,6 @@ USE `admin_xwc`;
 -- 表的结构 `cl_article`
 --
 
-DROP TABLE IF EXISTS `cl_article`;
 CREATE TABLE IF NOT EXISTS `cl_article` (
   `id` int(10) unsigned NOT NULL,
   `category` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '類別，0正體1簡體2英文',
@@ -71,7 +233,59 @@ INSERT INTO `cl_article` (`id`, `category`, `class`, `tag`, `source`, `author`, 
 (1084, 0, 0, '澳大利亚，黑客，隐私', 'www.scmagazine.com', '', '2015年1月22日', ' http://www.scmagazine.com/over-870k-personal-records-leaked-following-australian-insurer-breach/article/393459/ ', 'thumb/54c06be317fa7.jpg', 'thumb/54c06be317fa7.jpg', '澳大利亚旅游保险公司被黑87万个人记录遭泄露', '澳大利亚旅游保险公司被黑87万个人记录遭泄露', '澳大利亚旅游保险公司Aussie Travel Cover (ATC)公司去年12月被一名少年黑客攻击，导致大批个人数据被泄露。', '<p>澳大利亚旅游保险公司Aussie Travel Cover (ATC)公司去年12月被一名少年黑客攻击，导致大批个人数据被泄露。ATC于12月23日被告知此事件，但公司并未立即通知消费者及投保人。昆士兰名为Abdilo的黑客窃取了公司的两个数据库，其中包含87万个人信息。个人信息包括姓名、家庭住址、信用卡部分卡号。黑客于2015年1月16日通过推特称为该事件负责并提供了一个链接可打开包含数据库信息的网站，随后信息被删除。</p>\r\n', 1421896283, 1421896675, 1),
 (1085, 0, 0, '丝绸之路', 'yro.slashdot.org', '', '2015年1月22日', 'http://yro.slashdot.org/story/15/01/21/1918213/silk-road-20-deputy-arrested', 'thumb/54c06aa02e72f.jpg', 'thumb/54c06aa02e72f.jpg', '丝绸之路2.0管理员DoctorClu被捕', '丝绸之路2.0管理员DoctorClu被捕', '随着针对第一版“丝绸之路”乌布利希审判的进展，美国国土安全局在该网站关闭超过2.5个月之后逮捕了“丝绸之路2.0”的一名管理员。', '<p>随着针对第一版&ldquo;丝绸之路&rdquo;乌布利希审判的进展，美国国土安全局在该网站关闭超过2.5个月之后逮捕了&ldquo;丝绸之路2.0&rdquo;的一名管理员。这名管理员名为Brian Richard Farrell，绰号为&ldquo;DoctorClu&rdquo;。文章写道，&ldquo;国土安全局7月份对丝绸之路2.0活动的追踪最后到达Farrell在贝尔维尤的家。在接下来的几个月，国土安全局观察了他的行踪并采访了他的一名室友。他的室友称Farrell每天都在接收来自UPS、FedEx以及邮政包裹。国土安全局特工Larson表示，其中一个包裹中装有107粒赞安诺药丸。1月2日，国土安全局展开搜查，追缴了电脑、吸毒用具、价值3900美元的银条、以及35,000美元的现金。&rdquo;</p>\r\n', 1421896352, 1421896352, 1),
 (1086, 0, 0, '黑客，孟加拉，巴基斯坦', 'tribune.com.pk', '', '2015年1月22日', 'http://tribune.com.pk/story/824698/bangladeshi-hackers-take-down-jis-website/', 'thumb/54c06ad90da71.jpg', 'thumb/54c06ad90da71.jpg', '孟加拉国黑客黑掉巴基斯坦伊斯兰党网站', '孟加拉国黑客黑掉巴基斯坦伊斯兰党网站', '周二，巴基斯坦伊斯兰党的官方网站被声称来自孟加拉国的黑客入侵。\r\n', '<p>周二，巴基斯坦伊斯兰党的官方网站被声称来自孟加拉国的黑客入侵。黑客警告称这么做是为了阻止伊斯兰党干涉孟加拉国内政，并警告称如果对此警告不屑一顾，他们将会卷土重来。该黑客组织名为CyBER71。</p>\r\n\r\n<p>&nbsp;</p>\r\n', 1421896409, 1421896409, 1),
-(2845, 0, 0, 'gfd ', 'gg', '佚名', '2016年12月23日', 'ggg', 'thumb/201612/23/dd213a4193c6a39753688c9a5ffe83f0.jpg', 'thumb/201612/23/1ec90de6d72f28abb08b7f5535b6143c.jpg', '测试短标题', '测试短标题b', 'gs ', '<p>d s&nbsp;<img alt="韩国副本.jpg" src="http://adminx.com/uploads/img/editor/201612/23/7077bbf03e2f9343dd2b237f94f3d5aa.jpg" width="600" height="334"></p>', 1482481315, 1482481315, 1);
+(2845, 0, 0, 'gfd ,hgfgG', 'gg', '佚名ff', '2016年12月23日', 'ggg', 'thumb/201612/23/dd213a4193c6a39753688c9a5ffe83f0.jpg', 'thumb/201612/23/1ec90de6d72f28abb08b7f5535b6143c.jpg', '测试短标题', '测试短标题b', 'gs ', '<p>d s&nbsp;<img alt="韩国副本.jpg" src="http://adminx.com/uploads/img/editor/201612/23/7077bbf03e2f9343dd2b237f94f3d5aa.jpg" width="600" height="334"></img></p>', 1483084502, 1483084502, 1);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `dy_log`
+--
+
+CREATE TABLE IF NOT EXISTS `dy_log` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL DEFAULT '' COMMENT '用户名',
+  `action` tinyint(3) NOT NULL DEFAULT '0' COMMENT '操作类型 1 insert 2 update',
+  `otable` varchar(255) NOT NULL DEFAULT '' COMMENT '表名',
+  `oid` varchar(20) NOT NULL COMMENT '记录ID',
+  `odata` text NOT NULL COMMENT '详情',
+  `year` char(4) NOT NULL COMMENT '年',
+  `month` char(2) NOT NULL COMMENT '月',
+  `day` char(2) DEFAULT NULL COMMENT '日',
+  `create_time` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间'
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COMMENT='日志表';
+
+--
+-- 转存表中的数据 `dy_log`
+--
+
+INSERT INTO `dy_log` (`id`, `username`, `action`, `otable`, `oid`, `odata`, `year`, `month`, `day`, `create_time`) VALUES
+(1, 'admin', 1, 'auth_item', 'site/index', '{"last":{"type":2,"description":"概述1"},"cur":{"type":"2","description":"概述"}}', '2016', '12', '30', 1483084824),
+(2, 'admin', 1, 'auth_item', 'article/create', '{"last":{"type":2},"cur":{"type":"2"}}', '2016', '12', '30', 1483084976),
+(3, 'admin', 1, 'auth_item', 'article/create', '{"last":{"type":2,"description":"添加文章"},"cur":{"type":"2","description":"添加文章11"}}', '2016', '12', '30', 1483085029),
+(4, 'admin', 1, 'auth_item', 'article/create', '{"last":{"type":2,"description":"添加文章11"},"cur":{"type":"2","description":"添加文章1"}}', '2016', '12', '30', 1483085081),
+(5, 'admin', 1, 'auth_item', 'article/create', '{"last":{"type":2},"cur":{"type":"2"}}', '2016', '12', '30', 1483085096),
+(6, 'admin', 1, 'auth_item', 'article/create', '{"last":{"type":2,"description":"添加文章1"},"cur":{"type":"2","description":"添加文章"}}', '2016', '12', '30', 1483085108),
+(7, 'admin', 1, 'auth_item', 'site/index', '{"last":{"type":2,"description":"概述"},"cur":{"type":"2","description":"概述eqwe"}}', '2016', '12', '30', 1483087025),
+(8, 'admin', 1, 'auth_item', 'site/index', '{"last":{"type":2,"description":"概述eqwe"},"cur":{"type":"2","description":"概述"}}', '2016', '12', '30', 1483087035),
+(9, 'gaojiyong', 0, 'auth_item', 'test', '{"cur":{"name":"test","type":"1","description":"测试"}}', '2016', '12', '30', 1483089559),
+(10, 'gaojiyong', 0, 'auth_item', 'rabc/ucreate', '{"cur":{"name":"rabc\\/ucreate","type":"2","description":"用户添加"}}', '2016', '12', '30', 1483090270),
+(11, 'gaojiyong', 1, 'auth_item', 'rabc/ulist', '{"last":{"type":2,"description":"用户列表2"},"cur":{"type":"2","description":"用户列表"}}', '2016', '12', '30', 1483090280),
+(12, 'gaojiyong', 0, 'auth_item', 'rabc/uedit', '{"cur":{"name":"rabc\\/uedit","type":"2","description":"用户编辑"}}', '2016', '12', '30', 1483090414),
+(13, 'gaojiyong', 0, 'auth_item', 'rabc/rlist', '{"cur":{"name":"rabc\\/rlist","type":"2","description":"角色列表"}}', '2016', '12', '30', 1483090437),
+(14, 'gaojiyong', 0, 'auth_item', 'rabc/rcreate', '{"cur":{"name":"rabc\\/rcreate","type":"2","description":"角色添加"}}', '2016', '12', '30', 1483090459),
+(15, 'gaojiyong', 0, 'auth_item', 'rabc/rdel', '{"cur":{"name":"rabc\\/rdel","type":"2","description":"角色删除"}}', '2016', '12', '30', 1483090477),
+(16, 'gaojiyong', 0, 'auth_item', 'rabc/udel', '{"cur":{"name":"rabc\\/udel","type":"2","description":"用户删除"}}', '2016', '12', '30', 1483090518),
+(17, 'gaojiyong', 0, 'auth_item', 'rabc/reslist', '{"cur":{"name":"rabc\\/reslist","type":"2","description":"资源列表"}}', '2016', '12', '30', 1483090555),
+(18, 'gaojiyong', 0, 'auth_item', 'rabc/rescreate', '{"cur":{"name":"rabc\\/rescreate","type":"2","description":"资源添加"}}', '2016', '12', '30', 1483090576),
+(19, 'gaojiyong', 1, 'auth_item', 'article/create', '{"last":{"type":2,"description":"添加文章"},"cur":{"type":"2","description":"文章添加"}}', '2016', '12', '30', 1483090621),
+(20, 'gaojiyong', 1, 'auth_item', 'article/del', '{"last":{"type":2,"description":"删除文章"},"cur":{"type":"2","description":"文章删除"}}', '2016', '12', '30', 1483090631),
+(21, 'gaojiyong', 1, 'auth_item', 'article/edit', '{"last":{"type":2,"description":"编辑文章"},"cur":{"type":"2","description":"文章编辑"}}', '2016', '12', '30', 1483090640),
+(22, 'gaojiyong', 0, 'auth_item', 'rabc/resedit', '{"cur":{"name":"rabc\\/resedit","type":"2","description":"资源编辑"}}', '2016', '12', '30', 1483090676),
+(23, 'gaojiyong', 0, 'auth_item', 'rabc/resdel', '{"cur":{"name":"rabc\\/resdel","type":"2","description":"资源删除"}}', '2016', '12', '30', 1483090788),
+(24, 'admin', 1, 'auth_item', 'admin', '{"last":{"type":1},"cur":{"type":"1"}}', '2016', '12', '30', 1483090912),
+(25, 'admin', 1, 'auth_item', 'author', '{"last":{"type":1},"cur":{"type":"1"}}', '2016', '12', '30', 1483090932),
+(26, 'admin', 0, 'auth_item', 'rabc/redit', '{"cur":{"name":"rabc\\/redit","type":"2","description":"角色编辑"}}', '2016', '12', '30', 1483093132),
+(27, 'admin', 1, 'auth_item', 'admin', '{"last":{"type":1},"cur":{"type":"1"}}', '2016', '12', '30', 1483093139);
 
 -- --------------------------------------------------------
 
@@ -79,7 +293,6 @@ INSERT INTO `cl_article` (`id`, `category`, `class`, `tag`, `source`, `author`, 
 -- 表的结构 `dy_user`
 --
 
-DROP TABLE IF EXISTS `dy_user`;
 CREATE TABLE IF NOT EXISTS `dy_user` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
@@ -88,27 +301,67 @@ CREATE TABLE IF NOT EXISTS `dy_user` (
   `password` varchar(255) NOT NULL,
   `password_reset_token` varchar(255) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
-  `role` smallint(6) NOT NULL DEFAULT '10',
   `status` smallint(6) NOT NULL DEFAULT '10',
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `dy_user`
 --
 
-INSERT INTO `dy_user` (`id`, `username`, `nickname`, `auth_key`, `password`, `password_reset_token`, `email`, `role`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '超级管理员', '', '$2y$13$T73JrpOm8Srd9fimsbF0ke6YMA70ZisHcZGKol1CP6blAjuoEkmAe', NULL, 'admin@123.com', 10, 10, 0, 1482474170);
+INSERT INTO `dy_user` (`id`, `username`, `nickname`, `auth_key`, `password`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'admin', '超级管理员', '', '$2y$13$T73JrpOm8Srd9fimsbF0ke6YMA70ZisHcZGKol1CP6blAjuoEkmAe', NULL, 'admin@123.com', 10, 0, 1483093049),
+(8, 'gaojiyong', 'gaojiyong', 'qMkzfHEJ3QUZsKXIVwg9f5fhvILklXZg', '$2y$13$iiPN6yhMk7C5uviwo3CKY.1t3X5S4fkQJQfFbfuN6WrA13L3iv3De', NULL, '3323@qq.com', 10, 1483087465, 1483090980),
+(9, 'jjj', 'jjj', 'TsIggWrDPUCXLAn7vgg2m8WITKU2ynSE', '$2y$13$FTd5.7SxmO1Z.s3HnZis.OriM7/ro2DRVXl.SXD4/IXddFRLAAnf.', NULL, 'ss', 0, 1483088785, 1483088784);
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `auth_assignment`
+--
+ALTER TABLE `auth_assignment`
+  ADD PRIMARY KEY (`item_name`,`user_id`);
+
+--
+-- Indexes for table `auth_item`
+--
+ALTER TABLE `auth_item`
+  ADD PRIMARY KEY (`name`),
+  ADD KEY `rule_name` (`rule_name`),
+  ADD KEY `type` (`type`);
+
+--
+-- Indexes for table `auth_item_child`
+--
+ALTER TABLE `auth_item_child`
+  ADD PRIMARY KEY (`parent`,`child`),
+  ADD KEY `child` (`child`);
+
+--
+-- Indexes for table `auth_menu`
+--
+ALTER TABLE `auth_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `auth_menu_item`
+--
+ALTER TABLE `auth_menu_item`
+  ADD UNIQUE KEY `gg` (`menu_id`,`item_name`);
+
+--
 -- Indexes for table `cl_article`
 --
 ALTER TABLE `cl_article`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `dy_log`
+--
+ALTER TABLE `dy_log`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -123,15 +376,35 @@ ALTER TABLE `dy_user`
 --
 
 --
+-- AUTO_INCREMENT for table `auth_menu`
+--
+ALTER TABLE `auth_menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `cl_article`
 --
 ALTER TABLE `cl_article`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2846;
 --
+-- AUTO_INCREMENT for table `dy_log`
+--
+ALTER TABLE `dy_log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
+--
 -- AUTO_INCREMENT for table `dy_user`
 --
 ALTER TABLE `dy_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
+-- 限制导出的表
+--
+
+--
+-- 限制表 `auth_assignment`
+--
+ALTER TABLE `auth_assignment`
+  ADD CONSTRAINT `auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
