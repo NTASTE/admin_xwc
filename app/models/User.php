@@ -246,7 +246,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $roleNames = "";
         foreach ($this->assignments as $role) {
-            $roleNames .= $role->description;
+            $roleNames .= $role->description." ";
         }
         return $roleNames;
     }
