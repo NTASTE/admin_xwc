@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\components\mytraits\LogTrait;
 use Yii;
 
 /**
@@ -27,6 +28,8 @@ use Yii;
  */
 class ClArticle extends \yii\db\ActiveRecord
 {
+    //加载日志钩子
+    use LogTrait;
     /**
      * @inheritdoc
      */
@@ -42,7 +45,7 @@ class ClArticle extends \yii\db\ActiveRecord
     {
         return [
             [['category', 'class', 'create_time', 'update_time', 'status'], 'integer'],
-            [['source', 'url', 'title', 'description', 'content'], 'required'],
+            [['source', 'url', 'title','author', 'description', 'content'], 'required'],
             [['description', 'content'], 'string'],
             [['tag', 'pub_time', 'url', 'thumb', 'focus', 'title', 'simple_title'], 'string', 'max' => 255],
             [['source', 'author'], 'string', 'max' => 60]
@@ -90,8 +93,6 @@ class ClArticle extends \yii\db\ActiveRecord
                 $this->update_time=time();
             }else{
                 $this->create_time = $this->update_time =  time();
-                $this->author = "佚名";
-
             }
             return true;
         }else{

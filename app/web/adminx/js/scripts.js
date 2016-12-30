@@ -4,14 +4,14 @@
 
     // 滚动条
 
-    $("html").niceScroll({styler:"fb",cursorcolor:"#65cea7", cursorwidth: '6', cursorborderradius: '0px', background: '#424f63', spacebarenabled:false, cursorborder: '0',  zindex: '1000'});
+    jQuery("html").niceScroll({styler:"fb",cursorcolor:"#65cea7", cursorwidth: '6', cursorborderradius: '0px', background: '#424f63', spacebarenabled:false, cursorborder: '0',  zindex: '1000'});
     //
-    $(".left-side").niceScroll({styler:"fb",cursorcolor:"#65cea7", cursorwidth: '3', cursorborderradius: '0px', background: '#424f63', spacebarenabled:false, cursorborder: '0'});
+    jQuery(".left-side").niceScroll({styler:"fb",cursorcolor:"#65cea7", cursorwidth: '3', cursorborderradius: '0px', background: '#424f63', spacebarenabled:false, cursorborder: '0'});
 
 
-    $(".left-side").getNiceScroll();
-    if ($('body').hasClass('left-side-collapsed')) {
-        $(".left-side").getNiceScroll().hide();
+    jQuery(".left-side").getNiceScroll();
+    if (jQuery('body').hasClass('left-side-collapsed')) {
+        jQuery(".left-side").getNiceScroll().hide();
     }
 
 
@@ -130,7 +130,7 @@
    }
 
     // panel collapsible
-    $('.panel .tools .fa').click(function () {
+    jQuery('.panel .tools .fa').click(function () {
         var el = $(this).parents(".panel").children(".panel-body");
         if ($(this).hasClass("fa-chevron-down")) {
             $(this).removeClass("fa-chevron-down").addClass("fa-chevron-up");
@@ -140,20 +140,20 @@
             el.slideDown(200); }
     });
 
-    $('.todo-check label').click(function () {
+    jQuery('.todo-check label').click(function () {
         $(this).parents('li').children('.todo-title').toggleClass('line-through');
     });
 
-    $(document).on('click', '.todo-remove', function () {
+    jQuery(document).on('click', '.todo-remove', function () {
         $(this).closest("li").remove();
         return false;
     });
 
-    $("#sortable-todo").sortable();
+    jQuery("#sortable-todo").sortable();
 
 
     // panel close
-    $('.panel .tools .fa-times').click(function () {
+    jQuery('.panel .tools .fa-times').click(function () {
         $(this).parents(".panel").parent().remove();
     });
 
@@ -161,11 +161,11 @@
 
     // tool tips
 
-    $('.tooltips').tooltip();
+    jQuery('.tooltips').tooltip();
 
     // popovers
 
-    $('.popovers').popover();
+    jQuery('.popovers').popover();
 
 
 

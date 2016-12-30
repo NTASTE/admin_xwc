@@ -42,23 +42,23 @@ $this->params['breadcrumbs'][] = ['label' => '概述'];
 
 <script type="text/javascript">
 
-    $(document).ready(function(){
-
-        $.ajax({
-            url: '/index.php?r=common/tj',
-            dataType: 'json',
-            success: function (data) {
-                $(".redayUrlCount").html(data.redayUrlCount);
-                $(".ingUrlCount").html(data.ingUrlCount);
-                $(".outUrlCount").html(data.outUrlCount);
-
-                $(".itemsCount").html(data.itemsCount);
-                $(".okCveCount").html(data.okCveCount);
-                $(".redayCveCount").html(data.redayCveCount);
-
-            }
-        });
-
-    });
+//    $(document).ready(function(){
+//
+//        $.ajax({
+//            url: '/index.php?r=common/tj',
+//            dataType: 'json',
+//            success: function (data) {
+//                $(".redayUrlCount").html(data.redayUrlCount);
+//                $(".ingUrlCount").html(data.ingUrlCount);
+//                $(".outUrlCount").html(data.outUrlCount);
+//
+//                $(".itemsCount").html(data.itemsCount);
+//                $(".okCveCount").html(data.okCveCount);
+//                $(".redayCveCount").html(data.redayCveCount);
+//
+//            }
+//        });
+//
+//    });
 
 </script>

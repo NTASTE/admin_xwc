@@ -46,21 +46,21 @@ class User extends ActiveRecord implements IdentityInterface
             TimestampBehavior::className(),
         ];
     }
-    
+
     /**
      * @inheritdoc
      */
     public function attributeLabels()
     {
-    	return [
-    	'id' => 'ID',
-    	'username'=>"用户名",
-    	'password'=>'密码',
-    	'nickname'=>'昵称',
-    	'email' => '邮箱',
-    	'created_at' => '创建时间',
-    	'updated_at' => '最后登录时间',
-    	];
+        return [
+            'id' => 'ID',
+            'username' => "用户名",
+            'password' => '密码',
+            'nickname' => '昵称',
+            'email' => '邮箱',
+            'created_at' => '创建时间',
+            'updated_at' => '最后登录时间',
+        ];
     }
 
     /**
@@ -69,8 +69,8 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['username','email','password','nickname'],'required','on'=>['create']],
-            [['username','email','nickname'],'required','on'=>['update']],
+            [['username', 'email', 'password', 'nickname'], 'required', 'on' => ['create']],
+            [['username', 'email', 'nickname'], 'required', 'on' => ['update']],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
         ];
@@ -134,7 +134,7 @@ class User extends ActiveRecord implements IdentityInterface
         }
         $expire = Yii::$app->params['user.passwordResetTokenExpire'];
         $parts = explode('_', $token);
-        $timestamp = (int) end($parts);
+        $timestamp = (int)end($parts);
         return $timestamp + $expire >= time();
     }
 
@@ -207,27 +207,27 @@ class User extends ActiveRecord implements IdentityInterface
         $this->password_reset_token = null;
     }
 
-    public function beforeSave($insert){
-        if(parent::beforeSave($insert)){
-            if($this->scenario=='create'){
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if ($this->scenario == 'create') {
                 $this->setPassword($this->password);
-            }else{
-            	if(empty($this->password)){
-            		unset($this->password);
-            	}else{
-            		$this->setPassword($this->password);
-            	}
+            } else {
+                if (empty($this->password)) {
+                    unset($this->password);
+                } else {
+                    $this->setPassword($this->password);
+                }
             }
-            if($insert){
-                $this->created_at=time();
+            if ($insert) {
+                $this->created_at = time();
                 $this->generateAuthKey();
             }
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-
 
 
     /**
@@ -240,6 +240,15 @@ class User extends ActiveRecord implements IdentityInterface
             ->viaTable('auth_assignment', ['user_id' => 'id']);
 
 //        return $this->hasMany(AuthAssignment::className(), ['user_id' => 'id']);
+    }
+
+    public function getRolenames()
+    {
+        $roleNames = "";
+        foreach ($this->assignments as $role) {
+            $roleNames .= $role->description;
+        }
+        return $roleNames;
     }
 
 }

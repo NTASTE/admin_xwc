@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] =  $projectModel->isNewRecord ? '新增文章' : 
         <section class="panel">
             <div class="panel-body">
                 <?= $form->field($projectModel, 'title')->textInput(['maxlength' => 255]) ?>
-                <?= $form->field($projectModel, 'simple_title')->textInput(['maxlength' => 255]) ?>
+                <?= $form->field($projectModel, 'author')->textInput(['maxlength' => 255]) ?>
                 <?= $form->field($projectModel, 'pub_time')->textInput(['maxlength' => 255]) ?>
                 <?= $form->field($projectModel, 'source')->textInput(['maxlength' => 255]) ?>
                 <?= $form->field($projectModel, 'url')->textInput(['maxlength' => 255]) ?>

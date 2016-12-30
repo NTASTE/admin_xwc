@@ -8,6 +8,7 @@
  */
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use app\models\User;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -18,6 +19,10 @@ use yii\bootstrap\ActiveForm;
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <link href="/adminx/css/animate.min.css" rel="stylesheet">
+    <!--common scripts for all pages-->
+    <link href="/adminx/css/style.css" rel="stylesheet">
+    <link href="/adminx/css/style-responsive.css" rel="stylesheet">
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="/adminx/js/html5shiv.js"></script>
@@ -47,7 +52,9 @@ use yii\bootstrap\ActiveForm;
                                 <span class="clear">
                                <span class="block m-t-xs"><strong
                                        class="font-bold"><?= Yii::$app->getUser()->identity->attributes['username'] ?></strong></span>
-                                    <span class="text-muted text-xs block">超级管理员<b class="caret"></b></span>
+                                    <span class="text-muted text-xs block">
+                                        <?=User::findIdentity(Yii::$app->user->id)->rolenames; ?>
+                                        <b class="caret"></b></span>
                                 </span>
             </a>
             <ul class="dropdown-menu animated fadeInRight m-t-xs">
@@ -104,9 +111,7 @@ use yii\bootstrap\ActiveForm;
 </section>
 
 
-<!--common scripts for all pages-->
-<link href="/adminx/css/style.css" rel="stylesheet">
-<link href="/adminx/css/style-responsive.css" rel="stylesheet">
+
 <script src="/adminx/js/scripts.js"></script>
 <?php $this->endBody() ?>
 </body>

@@ -132,7 +132,6 @@ return [
   'yii\di\Container' => YII2_PATH . '/di/Container.php',
   'yii\di\Instance' => YII2_PATH . '/di/Instance.php',
   'yii\di\ServiceLocator' => YII2_PATH . '/di/ServiceLocator.php',
-  'yii\filters\AccessControl' => YII2_PATH . '/filters/AccessControl.php',
   'yii\filters\AccessRule' => YII2_PATH . '/filters/AccessRule.php',
   'yii\filters\ContentNegotiator' => YII2_PATH . '/filters/ContentNegotiator.php',
   'yii\filters\Cors' => YII2_PATH . '/filters/Cors.php',

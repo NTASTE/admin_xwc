@@ -2,17 +2,11 @@
 
 namespace app\controllers;
 
-
-
-use app\models\Project;
 use Yii;
-use yii\filters\AccessControl;
-use yii\web\Controller;
-use yii\filters\VerbFilter;
 use app\models\LoginForm;
-use app\components\TyuanController;
+use app\components\XwcController;
 
-class SiteController extends TyuanController
+class SiteController extends XwcController
 {
 
 

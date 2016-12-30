@@ -2,16 +2,18 @@
 
 namespace app\controllers;
 
-use app\components\TyuanController;
+use app\components\XwcController;
+use app\models\AuthAssignment;
 use app\models\ClArticle;
 use app\models\ProjectSearch;
 use app\components\CTools;
+use yii\base\ErrorException;
 use yii\base\Exception;
 use Yii;
 use yii\data\Pagination;
 use yii\web\ForbiddenHttpException;
 
-class ArticleController extends TyuanController
+class ArticleController extends XwcController
 {
     public $topMenu = 'article';
 
@@ -28,6 +30,9 @@ class ArticleController extends TyuanController
      * @return string
      */
     public function actionList(){
+
+
+
         $searchParams = Yii::$app->request->get('search');
         $obj = new ClArticle();
         $query = $obj->find();

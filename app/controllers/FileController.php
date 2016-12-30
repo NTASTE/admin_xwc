@@ -8,10 +8,10 @@
  */
 namespace app\controllers;
 
-use app\components\TyuanController;
+use app\components\XwcController;
 use Yii;
 
-class FileController extends TyuanController{
+class FileController extends XwcController{
     private $fileType = 0; #0表示文件 1表示图片
     private $fileRoot;
     private $imgRoot;

@@ -9,11 +9,11 @@
     </li>
 
 
-    <li class="menu-list <?php if($this->context->id == 'acl'): ?>nav-active<?php endif;  ?>" ><a href=""><i class="fa fa-group"></i> <span>权限管理</span></a>
+    <li class="menu-list <?php if($this->context->id == 'rabc'): ?>nav-active<?php endif;  ?>" ><a href=""><i class="fa fa-group"></i> <span>权限管理</span></a>
         <ul class="sub-menu-list">
-            <li <?php if($this->context->action->id == 'user'): ?>class="active"<?php endif;  ?> ><a href="<?= Yii::$app->urlManager->createUrl(['acl/user'])?>">用 户</a></li>
-            <li <?php if($this->context->action->id == 'role'): ?>class="active"<?php endif;  ?>><a href="<?= Yii::$app->urlManager->createUrl(['acl/role'])?>">角 色</a></li>
-            <li <?php if($this->context->action->id == 'resource'): ?>class="active"<?php endif;  ?>><a href="<?= Yii::$app->urlManager->createUrl(['acl/resource'])?>">资 源</a></li>
+            <li <?php if($this->context->action->id == 'ulist'): ?>class="active"<?php endif;  ?> ><a href="<?= Yii::$app->urlManager->createUrl(['rabc/ulist'])?>">用 户</a></li>
+            <li <?php if($this->context->action->id == 'rlist'): ?>class="active"<?php endif;  ?>><a href="<?= Yii::$app->urlManager->createUrl(['rabc/rlist'])?>">角 色</a></li>
+            <li <?php if($this->context->action->id == 'reslist'): ?>class="active"<?php endif;  ?>><a href="<?= Yii::$app->urlManager->createUrl(['rabc/reslist'])?>">资 源</a></li>
         </ul>
     </li>
 

@@ -1,7 +1,6 @@
 <?php
 
 namespace app\components;
-use yii\web\HttpException;
 /**
  +------------------------------------------------------------------------------
  * Http 工具类

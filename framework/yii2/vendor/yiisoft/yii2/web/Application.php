@@ -141,6 +141,10 @@ class Application extends \yii\base\Application
         return $this->get('user');
     }
 
+    public function getRole(){
+
+    }
+
     /**
      * @inheritdoc
      */

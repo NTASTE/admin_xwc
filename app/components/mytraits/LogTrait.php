@@ -14,10 +14,9 @@ trait  LogTrait
 {
     #日志表集合
     public $_tableList = [
-        'dy_cve',
-        'dy_items',
-        'dy_items_cve',
-        'dy_apply_items'
+        'cl_article',
+        'auth_item',
+        ''
     ];
     #表修改日志
     public function afterSave($insert, $changedAttributes)
@@ -25,7 +24,7 @@ trait  LogTrait
 
         parent::afterSave($insert, $changedAttributes);
         #排除控制台应用
-        if(\Yii::$app->id != 'tyuan-console' ){
+        if(\Yii::$app->id != 'XwcCmd' ){
             if(!$insert){
                 #更新
                 $odata['last']= $changedAttributes;
@@ -38,7 +37,7 @@ trait  LogTrait
 
             if($uid && in_array($tableName,$this->_tableList)){
                 $logModel = new DyLog();
-                $logModel->saveItem($insert,$tableName,$odata,$item['id']);
+                $logModel->saveItem($insert,$tableName,$odata,$this->getPrimaryKey());
             }
         }
 
