@@ -2,35 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c431e1c3-a2b4-4125-b7f4-75ebaab7ccfe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/rabc/_widgets/_tree.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/rabc/rcreate.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/rabc/res_create.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/rabc/reslist.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/rabc/rlist.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/rabc/ucreate.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/rabc/ulist.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/rabc/update.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/controllers/AclController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/web/admin_xwc.sql.bak" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/CHttp.php" afterPath="$PROJECT_DIR$/app/components/CHttp.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/mytraits/LogTrait.php" afterPath="$PROJECT_DIR$/app/components/mytraits/LogTrait.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/console.php" afterPath="$PROJECT_DIR$/app/config/console.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/ArticleController.php" afterPath="$PROJECT_DIR$/app/controllers/ArticleController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/FileController.php" afterPath="$PROJECT_DIR$/app/controllers/FileController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/SiteController.php" afterPath="$PROJECT_DIR$/app/controllers/SiteController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/ClArticle.php" afterPath="$PROJECT_DIR$/app/models/ClArticle.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/User.php" afterPath="$PROJECT_DIR$/app/models/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/article/add.php" afterPath="$PROJECT_DIR$/app/views/article/add.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/common/leftMenu.php" afterPath="$PROJECT_DIR$/app/views/common/leftMenu.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/main.php" afterPath="$PROJECT_DIR$/app/views/layouts/main.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/site/index.php" afterPath="$PROJECT_DIR$/app/views/site/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/web/adminx/js/scripts.js" afterPath="$PROJECT_DIR$/app/web/adminx/js/scripts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/framework/yii2/vendor/yiisoft/yii2/classes.php" afterPath="$PROJECT_DIR$/framework/yii2/vendor/yiisoft/yii2/classes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/framework/yii2/vendor/yiisoft/yii2/web/Application.php" afterPath="$PROJECT_DIR$/framework/yii2/vendor/yiisoft/yii2/web/Application.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/framework/yii2/vendor/yiisoft/yii2/web/ErrorAction.php" afterPath="$PROJECT_DIR$/framework/yii2/vendor/yiisoft/yii2/web/ErrorAction.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/components/TyuanController.php" afterPath="$PROJECT_DIR$/app/components/XwcController.php" />
     </list>
     <ignored path="admin_xwc.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -98,8 +70,8 @@
       <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7970012">
-              <caret line="37" column="97" selection-start-line="37" selection-start-column="97" selection-end-line="37" selection-end-column="97" />
+            <state vertical-scroll-proportion="0.12687428">
+              <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -1065,8 +1037,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7970012">
-          <caret line="37" column="97" selection-start-line="37" selection-start-column="97" selection-end-line="37" selection-end-column="97" />
+        <state vertical-scroll-proportion="0.12687428">
+          <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
           <folding />
         </state>
       </provider>
