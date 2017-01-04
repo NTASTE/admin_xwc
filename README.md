@@ -18,6 +18,9 @@
 
 
 
+演示地址: http://admin_xwc.1383979.com/
+账号密码  admin_xwc 123456
+
 ## 安装
 ### 1. sql文件 doc/admin_xwc.sql
 ### 2. 上传配置 config/params.php
