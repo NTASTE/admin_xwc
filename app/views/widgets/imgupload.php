@@ -37,6 +37,8 @@ $(function () {
                     $("img.<?=$randkey;?>").attr("src", o.filePath);
                     $(".hide<?=$randkey;?>").val(o.fileName);
 
+                }else{
+                    alert(o.msg);
                 }
         },
             error:function(){
