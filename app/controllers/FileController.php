@@ -22,7 +22,7 @@ class FileController extends XwcController{
     private  $allowExts = array("gz","zip","rar","tar.gz","jpg","png");
     private  $allowImgExts = array("jpg","png");
     // 允许上传的文件大小
-    private  $maxSize = -1;
+    private  $maxSize =  100*1024;
 
 
     public function init(){
