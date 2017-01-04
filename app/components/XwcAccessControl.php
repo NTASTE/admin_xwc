@@ -42,7 +42,8 @@ class XwcAccessControl extends AccessControl
             'rabc/getres',
             'site/logout',
             'site/login',
-            'site/captcha'
+            'site/captcha',
+            'file/upload',
         ];
     }
 }
